@@ -5,12 +5,15 @@ import { navigatePush } from '../actions'
 
 
 const mapStateToProps = (state) => {
-	return {	
+	return {
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		onSettingsPress: () => {
+			dispatch(navigatePush('Settings'))
+		},
 		onButtonPress: () => {
 			dispatch(navigatePush('Second'))
 		}

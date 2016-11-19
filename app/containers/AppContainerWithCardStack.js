@@ -1,17 +1,25 @@
 'use strict'
 
 import React, {PropTypes} from 'react'
-import {NavigationExperimental, StyleSheet} from 'react-native'
+import {
+	NavigationExperimental,
+	StyleSheet,
+	View,
+	Text
+} from 'react-native'
 import { connect } from 'react-redux'
 
+import Login from './Login'
 import First from './First'
+import Settings from './Settings'
 import Second from './Second'
 import Third from './Third'
 import Modal from './Modal'
+import Color from '../colors'
 import { navigatePop } from '../actions'
 
+const NavigationCardStack = require('../components/NavigationCardStack');
 const {
-	CardStack: NavigationCardStack,
 	Card: NavigationCard,
 	Header: NavigationHeader
 } = NavigationExperimental
@@ -29,31 +37,27 @@ class AppContainerWithCardStack extends React.Component {
 				navigationState={navigationState}
 				onNavigateBack={backAction}
 				style={styles.container}
-				direction={navigationState.routes[navigationState.index].key === 'Modal' ?
-					'vertical' : 'horizontal'
-				}
-				renderHeader={props => (
-					<NavigationHeader
-						{...props}
-						onNavigateBack={backAction}
-						renderTitleComponent={props => {
-							const title = props.scene.route.title
-							return <NavigationHeader.Title>{title}</NavigationHeader.Title>
-						}}
-						// When dealing with modals you may also want to override renderLeftComponent...
-					/>
+				cardStyle={(key) => key == 'Settings' ? {width: 300} : null }
+				renderOverlay={() => (
+					<View style={{position: 'absolute', bottom: 0, left: 0, right: 0, height: 40, backgroundColor: '#0002'}}>
+						<Text>Hello</Text>
+					</View>
 				)}
 				renderScene={this._renderScene}
 			/>
 		)
 	}
 
-	_renderScene({scene}) {
-		const { route } = scene
+	_renderScene(props) {
+		const { route } = props.scene
 
 		switch(route.key) {
+		case 'Login':
+			return <Login />
 		case 'First':
 			return <First />
+		case 'Settings':
+			return <Settings />
 		case 'Second':
 			return <Second />
 		case 'Third':
@@ -72,7 +76,7 @@ AppContainerWithCardStack.propTypes = {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: 'red',
+		backgroundColor: Color.background,
 	}
 })
 

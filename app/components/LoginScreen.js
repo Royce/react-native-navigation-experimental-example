@@ -9,25 +9,21 @@ import {
 import NavButton from './NavButton'
 import Color from '../colors'
 
-const FirstScreen = (props) => {
+const LoginScreen = (props) => {
 	return (
 		<View style={styles.container}>
 			<StatusBar
 			     backgroundColor={Color.background}
 			     barStyle="light-content"
 			   />
- 			<Text style={styles.title}>First Screen</Text>
+ 			<Text style={styles.title}>Login Screen</Text>
 
-			<NavButton destLabel="Second" buttonHandler={props.onButtonPress} />
-
-			<View style={styles.spacer}>
-				<NavButton destLabel="Settings" buttonHandler={props.onSettingsPress} />
-			</View>
+			<NavButton destLabel="First" buttonHandler={props.onButtonPress} />
 		</View>
 	)
 }
 
-FirstScreen.propTypes = {
+LoginScreen.propTypes = {
 	onButtonPress: PropTypes.func.isRequired
 }
 
@@ -50,4 +46,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default FirstScreen
+export default LoginScreen

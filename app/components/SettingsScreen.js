@@ -4,24 +4,22 @@ import {View, Text, StyleSheet} from 'react-native'
 import Color from '../colors'
 import NavButton from './NavButton'
 
-const SecondScreen = (props) => {
+const SettingsScreen = (props) => {
 	return (
 		<View style={styles.container}>
+				<Text style={styles.title}>Settings</Text>
 
-			<Text style={styles.title}>Second Screen</Text>
+				<NavButton destLabel="First" buttonHandler={props.onBackPress} />
 
-			<NavButton destLabel="Third" buttonHandler={props.onButtonPress} />
-
-			<View style={styles.spacer}>
-				<NavButton destLabel="Modal" buttonHandler={props.onModalButtonPress} />
-			</View>
+				<View style={styles.spacer}>
+					<NavButton destLabel="Logout" buttonHandler={props.onLogoutPress} />
+				</View>
 		</View>
 	)
 }
 
-SecondScreen.propTypes = {
-	onButtonPress: PropTypes.func.isRequired,
-	onModalButtonPress: PropTypes.func.isRequired
+SettingsScreen.propTypes = {
+	onBackPress: PropTypes.func.isRequired,
 }
 
 const styles = StyleSheet.create({
@@ -29,7 +27,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Color.background,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	title: {
 		fontSize: 24,
@@ -43,4 +41,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default SecondScreen
+export default SettingsScreen

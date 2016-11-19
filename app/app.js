@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import reducers from './reducers'
-import AppContainer from './containers/AppContainer'
 import AppContainerWithCardStack from './containers/AppContainerWithCardStack'
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
@@ -14,8 +13,6 @@ export default class App extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				{/* Change the component below to flip between the NavigationTransitioner
-				    and the NavigationCardStack examples: */}
 				<AppContainerWithCardStack />
 			</Provider>
 		)

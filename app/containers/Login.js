@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import SecondScreen from '../components/SecondScreen'
+import LoginScreen from '../components/LoginScreen'
 import { navigatePush } from '../actions'
 
 
@@ -11,14 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onBackPress: () => {
-			dispatch(navigatePush('First'))
-		},
 		onButtonPress: () => {
-			dispatch(navigatePush('Third'))
-		},
-		onModalButtonPress: () => {
-			dispatch(navigatePush('Modal'))
+			dispatch(navigatePush('First'))
 		}
 	}
 }
@@ -26,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(SecondScreen)
+)(LoginScreen)
