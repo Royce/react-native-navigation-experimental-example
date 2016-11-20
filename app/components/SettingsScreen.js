@@ -7,7 +7,7 @@ import NavButton from './NavButton'
 const SettingsScreen = (props) => {
 	return (
 		<View style={styles.container}>
-				<Text style={styles.title}>Settings</Text>
+				<Text style={styles.title}>{props.name}</Text>
 
 				<NavButton destLabel="First" buttonHandler={props.onBackPress} />
 

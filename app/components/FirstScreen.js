@@ -4,12 +4,17 @@ import {
 	Text,
 	StyleSheet,
 	StatusBar,
+	ListView,
 } from 'react-native'
 
 import NavButton from './NavButton'
+import BasicTile from './BasicTile'
 import Color from '../colors'
 
 const FirstScreen = (props) => {
+	const dsConfig = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  const ds = dsConfig.cloneWithRows(props.groups);
+
 	return (
 		<View style={styles.container}>
 			<StatusBar
@@ -18,11 +23,15 @@ const FirstScreen = (props) => {
 			   />
  			<Text style={styles.title}>First Screen</Text>
 
-			<NavButton destLabel="Second" buttonHandler={props.onButtonPress} />
+			<NavButton destLabel="Settings" buttonHandler={props.onSettingsPress} />
 
-			<View style={styles.spacer}>
-				<NavButton destLabel="Settings" buttonHandler={props.onSettingsPress} />
-			</View>
+			<ListView
+        dataSource={ds}
+        renderRow={g =>
+					<BasicTile group={g} buttonHandler={props.onButtonPress}/>
+				}
+      />
+
 		</View>
 	)
 }
@@ -35,14 +44,13 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Color.background,
-		justifyContent: 'center',
-		alignItems: 'center'
+		justifyContent: 'flex-start',
 	},
 	title: {
 		fontSize: 24,
 		fontWeight: '500',
 		color: '#ffffff',
-		marginBottom: 30
+		margin: 30
 	},
 	spacer: {
 		marginTop: 20,

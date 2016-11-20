@@ -5,8 +5,7 @@ import { navigatePush, navigatePop, navigateReset } from '../actions'
 
 
 const mapStateToProps = (state) => {
-	return {
-	}
+	return state.dataState.user;
 }
 
 const mapDispatchToProps = (dispatch) => {

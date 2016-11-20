@@ -6,6 +6,12 @@ import { navigatePush } from '../actions'
 
 const mapStateToProps = (state) => {
 	return {
+		groups: state.dataState.groups.map(g => {
+			return {
+				name: g.name,
+				count: g.things[0].a.length
+			};
+		}),
 	}
 }
 

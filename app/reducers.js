@@ -38,8 +38,52 @@ function navigationState(state = initialNavState, action) {
 	}
 }
 
+
+
+function createThing() {
+	var list = function () {
+		var n = Math.round(Math.random()*5);
+		var arr = [];
+		for (var i = 0; i < n; i++) {
+			arr.push(i);
+		}
+		return arr;
+	}
+	return {
+		name: "Name",
+		a: list(),
+		b: list(),
+		c: list(),
+		d: list(),
+		e: list()
+	}
+}
+
+function createGroup(name) {
+	return {
+		name: name,
+		things: [createThing(), createThing(), createThing(), createThing()]
+	}
+}
+
+const initialDataState = {
+	groups: [createGroup("Alpha"), createGroup("Beta"), createGroup("Cordial"), createGroup("Dog")],
+	user: {
+		name: "Charlie Chopsticks",
+	}
+}
+
+function dataState(state = initialDataState, action) {
+	switch (action.type) {
+
+	default:
+		return state
+	}
+}
+
 const appReducers = combineReducers({
-	navigationState
+	navigationState,
+	dataState
 })
 
 export default appReducers
