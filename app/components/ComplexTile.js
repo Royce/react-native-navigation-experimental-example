@@ -6,12 +6,20 @@ import {
 	View,
 } from 'react-native'
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+const myIcon = <Icon name="rocket" size={30} color="#900" />
+
 const List = ({header, items, alignRight}) => {
+	const alignStyle = {textAlign: alignRight ? 'right' : 'left'}
 	return (
 		<View style={styles.list}>
-			<Text style={styles.listHeader}>{header}</Text>
+			<Text style={[styles.listHeader, alignStyle]}>{header}</Text>
 			{items.map(item =>
-				<Text key={item} style={[styles.listItems, {textAlign: 'right'}]}>{`Thing item`}</Text>)}
+				<View key={item} style={[{flexDirection: 'row'}]}>
+					{myIcon}
+					<Text style={[styles.listItems, alignStyle]}>{`Thing item`}</Text>
+				</View>
+			)}
 		</View>
 	)
 }
@@ -20,13 +28,13 @@ const ComplexTile = (props) => {
 	return (
 		<View style={styles.tile}>
 			<View style={styles.lists}>
-				<List header={"Blip Blop"} items={props.thing.a} alignRight={true} />
+				<List header={"Blip Blop"} items={props.thing.a} />
 				<List header={"Bleeeeeep"} items={props.thing.b} />
 			</View>
 			<View style={styles.separator} />
 			<View style={styles.lists}>
-				<List header={"Chalieeeee"} items={props.thing.c} />
-				<List header={"Squireel"} items={props.thing.d} />
+				<List header={"Chalieeeee"} items={props.thing.c} alignRight={true} />
+				<List header={"Squireel"} items={props.thing.d} alignRight={true} />
 				<List header={"Sloopsd d"} items={props.thing.e} alignRight={true} />
 			</View>
 		</View>

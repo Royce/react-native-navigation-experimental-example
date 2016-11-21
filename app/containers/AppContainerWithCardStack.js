@@ -39,7 +39,7 @@ class AppContainerWithCardStack extends React.Component {
 				style={styles.container}
 				cardStyle={(key) => key == 'Settings' ? {width: 300} : null }
 				renderOverlay={() => (
-					<View style={{position: 'absolute', bottom: 0, left: 0, right: 0, height: 40, backgroundColor: '#0002'}}>
+					<View style={{position: 'absolute', bottom: 0, left: 0, right: 0, height: 40, backgroundColor: '#33f9'}}>
 						<Text>Hello</Text>
 					</View>
 				)}

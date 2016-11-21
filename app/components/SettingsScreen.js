@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 
+const NativeAnimatedModule = require('NativeModules').NativeAnimatedModule;
+
 import Color from '../colors'
 import NavButton from './NavButton'
 
@@ -8,6 +10,7 @@ const SettingsScreen = (props) => {
 	return (
 		<View style={styles.container}>
 				<Text style={styles.title}>{props.name}</Text>
+				<Text style={[styles.title, {fontSize: 12}]}>{`Native: ${!!NativeAnimatedModule}`}</Text>
 
 				<NavButton destLabel="First" buttonHandler={props.onBackPress} />
 

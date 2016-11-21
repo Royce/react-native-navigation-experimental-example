@@ -42,7 +42,7 @@ function navigationState(state = initialNavState, action) {
 
 function createThing() {
 	var list = function () {
-		var n = Math.round(Math.random()*5);
+		var n = Math.round(Math.random()*5+1);
 		var arr = [];
 		for (var i = 0; i < n; i++) {
 			arr.push(i);

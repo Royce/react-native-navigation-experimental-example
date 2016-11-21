@@ -15,7 +15,6 @@ import NavButton from './NavButton'
 const SecondScreen = (props) => {
 	const dsConfig = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
   const ds = dsConfig.cloneWithRows(props.things);
-	console.log(props.things);
 
 	return (
 		<View style={styles.container}>
@@ -34,6 +33,8 @@ const SecondScreen = (props) => {
 
 			<ListView
         dataSource={ds}
+				pageSize={1}
+				initialListSize={1}
         renderRow={thing =>
 					<ComplexTile thing={thing} />
 				}
